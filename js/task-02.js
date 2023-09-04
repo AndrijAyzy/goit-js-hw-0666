@@ -7,22 +7,17 @@ const ingredients = [
   'Condiments',
 ];
 
-const ingredientsList = document.querySelector('#ingredients');
+const makeListIngredients = (ingredients) => {
+  return ingredients.map((ingredient) => {
+    const itemEl = document.createElement('li');
+    itemEl.textContent = ingredient;
+    itemEl.classList.add('item');
 
-const ingredientsListItems = ingredients
-  .map((ingredient) => {return `
-    <li class="item">
-      ${ingredient}
-    </li>
-  `})
-  .join("");
+    return itemEl;
+  });
+};
 
-ingredientsList.insertAdjacentHTML("beforeend", ingredientsListItems);
+const items = makeListIngredients(ingredients);
 
-
-// for (let i = 0; i < ingredients.length; i++) {
-//   const ingredient = document.createElement("li");
-//   ingredient.classList.add("item");
-//   ingredient.textContent = `${ingredients[i]}`;
-//   ingredientsList.append(ingredient);
-// };
+const ingredientsEl = document.querySelector('#ingredients');
+ingredientsEl.append(...items);

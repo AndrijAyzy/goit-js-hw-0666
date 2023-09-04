@@ -1,18 +1,10 @@
-const input = document.querySelector('#validation-input');
+const inputEl = document.querySelector(`#validation-input`);
 
-input.addEventListener("blur", () => {
-    if (input.value.length === 6) {
-        if (input.classList.contains("invalid")) {
-            input.classList.remove("invalid");
-        }
+inputEl.addEventListener(`blur`, handleChackValueInput);
 
-        input.classList.add("valid");
-    } else {
-        if (input.classList.contains("valid")) {
-            input.classList.remove("valid");
-        }
-        
-        input.classList.add("invalid");
-    }
-});
-
+function handleChackValueInput(event) {
+  inputEl.classList.add(`invalid`);
+  if (event.currentTarget.value.length === Number(inputEl.dataset.length)) {
+    inputEl.classList.replace(`invalid`, `valid`);
+  }
+}
